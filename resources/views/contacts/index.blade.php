@@ -15,6 +15,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Contact</th>
+                    <th>Actions
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,11 @@
                     <td>{{ $contact->name }}</td>
                     <td>{{ $contact->email }}</td>
                     <td>{{ $contact->contact }}</td>
+                    <td>
+                        <a href="{{ route('contacts.details', $contact->id) }}" class="btn btn-sm btn-primary">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

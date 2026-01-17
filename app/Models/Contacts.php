@@ -9,6 +9,13 @@ class Contacts extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'email',
+        'contact',
+        'active',
+    ];
+
     public function scopeActive($query)
     {
         return $query->where('active', 1);

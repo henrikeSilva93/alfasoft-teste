@@ -13,4 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\ContactController::class, 'index']);
+Route::get('/', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts.list');
+
+Route::prefix('contact')->group(function () {
+    Route::get('/create', [App\Http\Controllers\ContactController::class, 'create'])->name('contacts.create');
+    Route::post('/store', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
+    Route::get('/details/{id}', [App\Http\Controllers\ContactController::class, 'details'])->name('contacts.details');
+});
