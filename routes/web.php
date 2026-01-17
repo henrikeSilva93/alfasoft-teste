@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\Contacts::class, 'index']);
+Route::get('/', [App\Http\Controllers\ContactController::class, 'index']);
