@@ -1,3 +1,30 @@
-<div>
-    <!-- It is not the man who has too little, but the man who craves more, that is poor. - Seneca -->
-</div>
+@extends('layout.layout')
+
+@section("content")
+    <div class="row">
+        <div class="col">
+            <h3>{{$contact->name}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <tr>
+                    <th>Email</th>
+                    <td>{{ $contact->email }}</td>
+                </tr>
+                <tr>
+                    <th>Contact</th>
+                    <td>{{ $contact->contact }}</td>
+                </tr>
+            </table>
+
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
+    </div>
+    <a href="{{ route('contacts.list') }}" class="btn btn-secondary">Back</a>
+@endsection
