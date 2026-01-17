@@ -8,7 +8,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $contacts = ContactsModel::all();
+        $contacts = ContactsModel::Active()->get();
     
         return view('contacts.index', ['contacts' => $contacts]);
     }

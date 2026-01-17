@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Contacts extends Model
 {
     use HasFactory;
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
 }
