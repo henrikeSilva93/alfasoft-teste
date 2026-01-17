@@ -7,7 +7,7 @@
 
     <title>Document</title>
 </head>
-<body>
+<body class="container-fluid p-3">
     @yield('content')
 </body>
 </html>
