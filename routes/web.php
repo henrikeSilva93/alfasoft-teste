@@ -19,4 +19,7 @@ Route::prefix('contact')->group(function () {
     Route::get('/create', [App\Http\Controllers\ContactController::class, 'create'])->name('contacts.create');
     Route::post('/store', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
     Route::get('/details/{id}', [App\Http\Controllers\ContactController::class, 'details'])->name('contacts.details');
+    Route::get('/edit/{id}', [App\Http\Controllers\ContactController::class, 'edit'])->name('contacts.edit');
+    Route::post('/update/{id}', [App\Http\Controllers\ContactController::class, 'update'])->name('contacts.update');
+    Route::get('/delete/{id}', [App\Http\Controllers\ContactController::class, 'delete'])->name('contacts.delete');
 });

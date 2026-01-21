@@ -8,6 +8,11 @@
     </div>
 </div>
 <div class="row">
+    <div class="col d-flex justify-content-end">
+        <button onclick="window.location='{{ route('contacts.create') }}'" class="btn btn-primary mb-3">New Contact</button>
+    </div>
+</div>
+<div class="row">
     <div class="col">
         <table class="table table-striped">
             <thead>
@@ -28,6 +33,8 @@
                     <td>{{ $contact->contact }}</td>
                     <td>
                         <a href="{{ route('contacts.details', ['id' => $contact->id]) }}" class="btn btn-info btn-sm">Details</a>
+                        <a href="{{ route('contacts.edit', ['id' => $contact->id]) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('contacts.delete', ['id' => $contact->id]) }}" class="btn btn-danger btn-sm" onclick="return confirm('tem certeza?')">Delete</a>
                     </td>
                 </tr>
                 @endforeach
