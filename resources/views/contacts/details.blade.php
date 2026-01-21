@@ -26,5 +26,10 @@
             @endif
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <a href="{{ route('contacts.edit', ['id' => $contact->id]) }}" class="btn btn-warning">Edit</a>
+        </div>
+    </div>
     <a href="{{ route('contacts.list') }}" class="btn btn-secondary">Back</a>
 @endsection

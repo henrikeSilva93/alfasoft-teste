@@ -22,6 +22,28 @@ class ContactController extends Controller
         return view('contacts.details', ['contact' => $contact]);
     }
 
+    public function edit($id){
+        $contact = ContactsModel::findOrFail($id);
+        return view('contacts.edit', ['contact' => $contact]);
+    }
+
+    public function update(Request $request, $id) {
+        $request->validate([
+            'name' => 'required|string|min:5|max:150',
+            'email' => 'required|email|max:255|unique:contacts,email,'.$id,
+            'contact' => 'required|min:9|max:50',
+        ]);
+
+        ContactsModel::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'contact' => $request->contact
+        ]);
+
+        session()->flash('success', 'Contact updated successfully.');
+        return redirect()->route('contacts.list');
+    }
+
 
     public function store(Request $request) {
       $request->validate([
@@ -37,6 +59,14 @@ class ContactController extends Controller
         ]);
 
         session()->flash('success', 'Contact created successfully.');
+        return redirect()->route('contacts.list');
+    }
+
+    public function delete($id){
+        $contact = ContactsModel::findOrFail($id);
+        $contact->delete();
+
+        session()->flash('success', 'Contact deleted successfully.');
         return redirect()->route('contacts.list');
     }
  
