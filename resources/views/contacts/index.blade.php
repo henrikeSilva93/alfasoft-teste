@@ -2,14 +2,17 @@
 
 @section("content")
 
-<div class="row">
+<div class="container mt-4">
+    <div class="row">
     <div class="col">
         <h3>Contacts List</h3>
     </div>
 </div>
 <div class="row">
     <div class="col d-flex justify-content-end">
+       @auth
         <button onclick="window.location='{{ route('contacts.create') }}'" class="btn btn-primary mb-3">New Contact</button>
+        @endauth
     </div>
 </div>
 <div class="row">
@@ -31,15 +34,18 @@
                     <td>{{ $contact->name }}</td>
                     <td>{{ $contact->email }}</td>
                     <td>{{ $contact->contact }}</td>
+                  @auth
                     <td>
                         <a href="{{ route('contacts.details', ['id' => $contact->id]) }}" class="btn btn-info btn-sm">Details</a>
                         <a href="{{ route('contacts.edit', ['id' => $contact->id]) }}" class="btn btn-warning btn-sm">Edit</a>
                         <a href="{{ route('contacts.delete', ['id' => $contact->id]) }}" class="btn btn-danger btn-sm" onclick="return confirm('tem certeza?')">Delete</a>
                     </td>
+                  @endauth
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+</div>
 </div>
 @endsection

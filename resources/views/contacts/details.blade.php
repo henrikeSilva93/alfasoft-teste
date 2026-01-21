@@ -29,6 +29,7 @@
     <div class="row">
         <div class="col">
             <a href="{{ route('contacts.edit', ['id' => $contact->id]) }}" class="btn btn-warning">Edit</a>
+            <a href="{{ route('contacts.delete', ['id' => $contact->id]) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this contact?')">Delete</a>
         </div>
     </div>
     <a href="{{ route('contacts.list') }}" class="btn btn-secondary">Back</a>
