@@ -20,7 +20,8 @@ class AuthController extends Controller
 
             return redirect()->route('contacts.list');
         }else {
-            return back()->withErrors(['email' => 'Invalid credentials provided.'])->withInput();
+            session()->flash('error', 'Invalid credentials provided.');
+            return back()->withInput();
         }
     }
 
@@ -36,7 +37,7 @@ class AuthController extends Controller
         ]);
 
         $user = \App\Models\User::create([
-            'name' => $request->username,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
